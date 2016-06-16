@@ -16,7 +16,12 @@ mongoose.connect("mongodb://localhost/SlatedAutoComplete");
 
 // Logging and Parsing
 app.use(express.static(__dirname + '/public'));                 // sets the static files location to public
-app.use('/modules',  express.static(__dirname + '/node_modules')); // Use BowerComponents
+// app.use('/modules',  express.static(__dirname + '/node_modules')); 
+
+app.use('/scripts', express.static(__dirname + '/node_modules/angular/'));
+app.use('/scripts', express.static(__dirname + '/node_modules/jquery/'));
+app.use('/scripts', express.static(__dirname + '/node_modules/modernizr/'));
+
 app.use(morgan('dev'));                                         // log with Morgan
 app.use(bodyParser.json());                                     // parse application/json
 app.use(bodyParser.urlencoded({extended: true}));               // parse application/x-www-form-urlencoded
@@ -28,9 +33,7 @@ app.use(methodOverride());
 // ------------------------------------------------------
 // require('./app/routes.js')(app);
 
-app.use('/scripts', express.static(__dirname + '/node_modules/angular/'));
-app.use('/scripts', express.static(__dirname + '/node_modules/jquery/'));
-app.use('/scripts', express.static(__dirname + '/node_modules/modernizr/'));
+
 
 // Listen
 // -------------------------------------------------------
