@@ -18,9 +18,9 @@ mongoose.connect("mongodb://localhost/SlatedAutoComplete");
 app.use(express.static(__dirname + '/public'));                 // sets the static files location to public
 // app.use('/modules',  express.static(__dirname + '/node_modules')); 
 
-app.use('/scripts', express.static(__dirname + '/node_modules/angular/'));
-app.use('/scripts', express.static(__dirname + '/node_modules/jquery/'));
-app.use('/scripts', express.static(__dirname + '/node_modules/modernizr/'));
+app.use('/scripts', express.static(__dirname + '/node_modules'));
+/*app.use('/scripts', express.static(__dirname + '/node_modules/jquery/'));
+app.use('/scripts', express.static(__dirname + '/node_modules/modernizr/'));*/
 
 app.use(morgan('dev'));                                         // log with Morgan
 app.use(bodyParser.json());                                     // parse application/json
