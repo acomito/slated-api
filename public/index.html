@@ -1,0 +1,40 @@
+<!doctype html>
+<html class="no-js" lang="" >
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>SLATED.COM AUTOCOMPLETE</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css">
+        <!-- Latest compiled and minified bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+         <link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
+        <!-- Internal CSS -->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body >
+    
+    <!-- Check for JS. Is JS turned on? -->
+    <noscript>
+    <div class="nojs">Javascript is either disabled or not supported in your browser. Please enable it or use a Javascript enabled browser.</div>
+    </noscript>
+
+    <!-- Start of Angular App -->
+    <div ng-app="app" class="animated fadeInDown">
+        <div class="container" ng-controller="TypeAheadController">
+            <h1><a href="http://www.slated.com">Slated</a> API Autocomplete</h1>
+        <!-- Main Typehead directive-->
+            <typeahead searching="searching" items="items" prompt="enter a film title..." img="image_code" title="label" description="description"  link="link_code" model="name" on-select="onItemSelected()" format="formatHTML()" no-search-results="noSearchResults" />
+        </div>
+    </div>
+
+    <!-- JS Scripts -->
+        <!-- set up with Express proxy for security..."modules" directory maps to "node_modules" directory -->
+        <script src="modules/jquery/dist/jquery.min.js"></script>
+        <script src="modules/angular/angular.js"></script>
+        <!-- main angular app file-->
+        <script src="js/app.js"></script>
+    </body>
+</html>

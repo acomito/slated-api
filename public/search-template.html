@@ -1,0 +1,55 @@
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  
+					SEARCH INPUT 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+<input   type="text" ng-model="model" placeholder="{{prompt}}" ng-keydown="selected=false" ng-model-options="{ debounce: 500 }"/><br/> 
+
+
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+			START - AUTOCOMPLETE "DROPDOWN" AREA
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+
+<!-- START of "sorry no results" section -->
+<div class="item animated fadeIn" ng-show="noSearchResults" > 
+	<div class="row">
+		<div class="flex-spinner-container">
+			<img class="gif" src="http://i.stack.imgur.com/XhJaf.gif"> <!-- the shinning -->
+		</div>
+		<p class="loading-text">Sorry... no results for <strong>{{model}}</strong></p>
+	</div>
+</div><!-- END of "sorry no results" section -->
+
+<!-- START of autocomplete dropdown -->
+<div class="items" ng-hide="!model.length || selected"> 
+
+	<!-- START of "searching..." div -->
+	<div class="item"  ng-show="searching"> 
+		<div class="flex-spinner-container">
+			<img class="gif" src="https://66.media.tumblr.com/7443469a25cc99a29bd8bc5cbeb0015d/tumblr_nzvi8phpD41terv0yo1_500.gif"> <!-- the shinning -->
+		</div>
+		<div class="row">
+			<p class="loading-text">hold on...<br> Searching Slated.com...</p>
+		</div>
+	</div><!-- END of "searching..." div -->
+
+	<!-- START of ng-repeat section-->
+	<div class="item animated fadeIn" ng-repeat="item in items | filter:model" ng-click="handleSelection(item.label)" style="cursor:pointer" ng-class="{active:isCurrent(item)}" ng-mouseenter="setCurrent(item)">
+		<div class="row">
+			<div class="col-sm-2">
+				<div ng-bind-html="formatHTML(item.image_code)"></div> <!-- image ~ note: formatHTML() converts string "<img>"" tag to actual html tag-->
+			</div>
+			<div class="col-sm-9">
+			<a ng-src="{{item.link_code}}" class="autocomplete-link" ><p class="title">{{item.label}}</p></a> <!-- title -->
+			<p ng-if="item.description" class="subtitle">{{item.description | limitTo: 50 }}...</p>  <!-- description -->
+			</div>
+		</div>
+	</div><!-- END of ng-repeat section-->
+
+</div> <!-- END of autocomplete dropdown -->
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		END - AUTOCOMPLETE "DROPDOWN" AREA
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  -->
+
+
