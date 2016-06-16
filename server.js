@@ -37,6 +37,7 @@ app.use(methodOverride());
 
 // Listen
 // -------------------------------------------------------
-app.listen(port);
+/*app.listen(port);*/
+app.listen(80);
 console.log('App listening on port ' + port);
 
